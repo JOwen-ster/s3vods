@@ -200,6 +200,10 @@
         align-items: start;
     }
 
+    h2 {
+        color: var(--dull-white);
+    }
+
     @media screen and (max-width: 1024px) {
         .card-grid {
             grid-template-columns: repeat(2, 1fr);

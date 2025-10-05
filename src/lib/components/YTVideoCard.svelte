@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let {
 		video_id = 'ZxxHfPM7NT8',
 		title = 'Title',
@@ -6,6 +6,14 @@
 		social_link = 'https://sendou.ink/u',
 		tags = ['tag1', 'tag2', 'tag3'],
 	} = $props();
+
+	import { currentQuery } from '$lib/data/query_state.svelte';
+
+	function appendTag(tag: string) {
+		if (!currentQuery.value.includes(tag)) {
+			currentQuery.value = currentQuery.value + ` ${tag}`;
+		}
+	}
 </script>
 
 <div class="card">
@@ -33,7 +41,7 @@
 
 	<div class="card-tag-container">
 		{#each tags as tag}
-			<span class="card-tag">{tag}</span>
+			<button onclick={() => appendTag(tag)} class="card-tag">{tag}</button>
 		{/each}
 	</div>
 </div>
@@ -101,7 +109,6 @@
 		gap: 10px;
 		background-color: var(--surface-light);
 	}
-
 	.card-tag {
 		color: var(--text-secondary);
 		border: 1px solid var(--text-secondary);
@@ -110,13 +117,19 @@
 		font-size: 16px;
 		font-weight: bold;
 		font-family: monospace;
-			transition: all 0.2s ease-in-out;
-		cursor: default;
+		transition: all 0.2s ease-in-out;
+		cursor: pointer;
+
+		/* Reset button defaults */
+		background: none;
+		outline: none;
+		border: 1px solid var(--text-secondary);
+		appearance: none;
 	}
 
 	.card-tag:hover {
-			color: var(--background);
-			background-color: var(--hover-blue);
-			transform: translateY(-3px);
+		color: var(--background);
+		background-color: var(--hover-blue);
+		transform: translateY(-3px);
 	}
 </style>
