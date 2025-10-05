@@ -6,6 +6,8 @@ Update font for pagination buttons to sans-serif
 
 Add footer with copy?
 
+CREATE A PARSER FOR SEARCH TAGS (MAKE TAGS NOT HAVE SPACES USE DASHES)
+
 Add a page on the site with a list of all the players who submitted
 
 Add a page on the site with a list of all the players who have supported or are supporting (paypal or patreon)
